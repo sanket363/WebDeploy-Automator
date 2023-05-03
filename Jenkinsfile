@@ -30,8 +30,7 @@ pipeline {
                 // Test the deployed application
                 script {
                     echo "running tests"
-                    echo "everythin running fine"
-                    }
+                    echo "everything running fine"
                 }
             }
         }
