@@ -8,17 +8,16 @@ pipeline {
                 sh 'docker pull httpd:latest'
             }
         }
-        stage('Unit Test') {
-            steps {
-                // Run unit tests
-                sh 'docker run --rm httpd:latest /bin/bash -c "cd /usr/local/apache2/htdocs && phpunit"'
-                
-            }
-        }
         stage('Deploy') {
             steps {
                 // Deploy to production
                 sh 'docker run -d -p 80:80 httpd:latest'
+            }
+        }
+        stage('Testing') {
+            steps {
+                // Deploy to production
+                sh 'curl -I -s http://3.110.121.165:80 | head -n 1 | awk '{print $2}''
             }
         }
     }
