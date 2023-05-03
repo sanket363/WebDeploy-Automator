@@ -11,7 +11,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 // Deploy to production
-                sh 'docker run -d -p 80:80 httpd:latest'
+                sh 'docker run -d -p 80:80 snaket2628/todo:latest'
             }
         }
         stage('Testing') {
