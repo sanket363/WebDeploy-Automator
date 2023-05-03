@@ -18,7 +18,7 @@ pipeline {
             steps {
                 // Test the deployed application
                 script {
-                    def response = sh(script: "curl -I -s http://3.110.121.165:80 | head -n 1 | awk '{print $2}'", returnStdout: true).trim()
+                    def response = sh(script: "curl -I -s http://3.110.121.165:80 | head -n 1 | awk '{print \$2}'", returnStdout: true).trim()
                     if (response == '200') {
                         echo "Application is running successfully with status code ${response}"
                     } else {
