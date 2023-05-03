@@ -12,6 +12,7 @@ pipeline {
             steps {
                 // Run unit tests
                 sh 'docker run --rm my-apache-image /bin/bash -c "cd /var/www/html && phpunit"'
+                
             }
         }
         stage('Deploy') {
