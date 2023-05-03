@@ -14,6 +14,7 @@ pipeline {
                     def containerID = sh(script: "docker ps -q --filter ancestor=snaket2628/todo:latest", returnStdout: true).trim()
                     if (containerID != "") {
                         sh "docker stop ${containerID}"
+                        sh "docker rm ${containerID}"
                     }
                 }
             }
