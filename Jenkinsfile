@@ -4,21 +4,21 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Build Docker image
-                sh 'docker build -t my-apache-image .'
+                // Pull the Apache image
+                sh 'docker pull httpd:latest'
             }
         }
         stage('Unit Test') {
             steps {
                 // Run unit tests
-                sh 'docker run --rm my-apache-image /bin/bash -c "cd /var/www/html && phpunit"'
+                sh 'docker run --rm httpd:latest /bin/bash -c "cd /usr/local/apache2/htdocs && phpunit"'
                 
             }
         }
         stage('Deploy') {
             steps {
                 // Deploy to production
-                sh 'docker run -d -p 80:80 my-apache-image'
+                sh 'docker run -d -p 80:80 httpd:latest'
             }
         }
     }
